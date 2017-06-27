@@ -1,7 +1,7 @@
 
 First Codeschool Project by:
 
-Thomas Elrod, Brenda Nickish, Quinn Bruderer
+Thomas Elrod, Brenda Nickisch, Quinn Bruderer
 
 
 
