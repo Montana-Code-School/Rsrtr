@@ -1,24 +1,22 @@
 import React, {Component} from 'react';
 import 'whatwg-fetch'
 
-let lat;
-let lng;
-
 
 export default class Quinntest extends Component {
   state = {
-    lat: null,
-    lng: null
+    lat: '',
+    lng: '',
+    cus: ''//'count=3&'
+    //this is an example of adding a 3count filter to our shtuff.
+    //filters will probably become
   }
 
   componentDidMount() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-
-        lat = position.coords.latitude,
-        lng = position.coords.longitude;
-        this.setState({lat: lat, lng: lng},  ()=>{
-          fetch(`https://developers.zomato.com/api/v2.1/search?lat=${this.state.lat}&lon=${this.state.lng}`, {
+        this.setState({lat: position.coords.latitude,
+                       lng: position.coords.longitude},  ()=>{
+          fetch(`https://developers.zomato.com/api/v2.1/search?${this.state.cus}lat=${this.state.lat}&lon=${this.state.lng}`, {
             //method: 'GET',
             headers: {
               'Accept': 'application/json',
@@ -27,9 +25,16 @@ export default class Quinntest extends Component {
           })
           .then((response) => response.json())
           .then((responseJson) => {
-            console.log(responseJson);
-            console.log(responseJson.restaurants.map((obj)=> obj.restaurant.name))
+
+            const restNameArr = responseJson.restaurants.map((obj)=> obj.restaurant.name)
+            return restNameArr;
           })
+          .then((result) =>{
+            console.log("2nd result", result);
+            var randNum = (Math.floor(Math.random() * result.length-1));
+            console.log (result[randNum])
+          }
+          )
           .catch((error) => {
             console.error(error);
           });
