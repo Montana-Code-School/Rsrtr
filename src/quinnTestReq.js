@@ -40,16 +40,12 @@ export default class Quinntest extends Component {
     });
   }
 
-  componentWillUpdate(nextProps, nextState){
-    console.log(this.state.lat, nextState.lat)
-    console.log('component updating')
-  }
+
 
   componentDidMount() {
     console.log('Component mounting')
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-
         lat = position.coords.latitude,
         lng = position.coords.longitude;
         this.setState({lat: lat, lng: lng},  this.suggest.bind(this))
