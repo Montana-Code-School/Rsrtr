@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 //import gmap from 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCr6EwvdOcCpVEe5Xir9aLi_neVGEu6THA'
+import Quinn from './quinnTestReq'
 
 class App extends Component {
 
@@ -11,11 +12,9 @@ class App extends Component {
 
 
 
-
-
-
-
   render() {
+
+
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log(position.coords.latitude, position.coords.longitude);
@@ -32,6 +31,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <Quinn />
       </div>
     );
   }
