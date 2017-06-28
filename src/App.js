@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import burger from './burger.png';
 import './App.css';
 //import gmap from 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCr6EwvdOcCpVEe5Xir9aLi_neVGEu6THA'
 import Quinn from './quinnTestReq'
+import 'whatwg-fetch'
 
 class App extends Component {
 
+  state = {
+    recommendation : <Quinn key={Math.random()}/>
+  }
 
 
-
-
+//fetch('/quinnTestReq' + this.state.finished )
 
 
   render() {
@@ -25,13 +28,21 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <img src={burger} className="App-logo" alt="logo" />
+          <h2>Restaurantr</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Press the button to find a place to eat!
         </p>
-        <Quinn />
+                <div>
+
+               <button onClick={()=>this.setState({recommendation: <Quinn key={Math.random()}/>})}> Where are we going? </button>
+
+
+
+                </div>
+
+                {this.state.recommendation}
       </div>
     );
   }

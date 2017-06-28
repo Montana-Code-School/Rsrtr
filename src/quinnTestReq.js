@@ -4,36 +4,55 @@ import 'whatwg-fetch'
 let lat;
 let lng;
 
+let finshed;
+
 
 export default class Quinntest extends Component {
   state = {
     lat: null,
-    lng: null
+    lng: null,
+    finished: null
+  }
+
+  suggest(){
+    fetch(`https://developers.zomato.com/api/v2.1/search?lat=${this.state.lat}&lon=${this.state.lng}`, {
+      //method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'user-key': 'b3549408bdd1a9da0380f2f2aaf4efa6'
+      }
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+        console.log(responseJson);
+        const restNameArr =  responseJson.restaurants.map((obj)=> obj.restaurant.name)
+        //  console.log(responseJson.restaurants.map((obj)=> obj.restaurant.name))
+        return restNameArr
+    })
+    .then((result) =>{
+     console.log("2nd result", result);
+     var randNum = (Math.floor(Math.random() * result.length-1));
+     const chosenOne = (result[randNum])
+     this.setState({finished: chosenOne})
+   })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
+  componentWillUpdate(nextProps, nextState){
+    console.log(this.state.lat, nextState.lat)
+    console.log('component updating')
   }
 
   componentDidMount() {
+    console.log('Component mounting')
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
 
         lat = position.coords.latitude,
         lng = position.coords.longitude;
-        this.setState({lat: lat, lng: lng},  ()=>{
-          fetch(`https://developers.zomato.com/api/v2.1/search?lat=${this.state.lat}&lon=${this.state.lng}`, {
-            //method: 'GET',
-            headers: {
-              'Accept': 'application/json',
-              'user-key': 'b3549408bdd1a9da0380f2f2aaf4efa6'
-            }
-          })
-          .then((response) => response.json())
-          .then((responseJson) => {
-            console.log(responseJson);
-            console.log(responseJson.restaurants.map((obj)=> obj.restaurant.name))
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-        })
+        this.setState({lat: lat, lng: lng},  this.suggest.bind(this))
       });
     } else {
       console.log('Oh snap')
@@ -44,9 +63,11 @@ export default class Quinntest extends Component {
   render() {
 
     return (
-      <div>
-        {this.state.lat ? "You are located at " + this.state.lat + " , " + this.state.lng : "No location found"}
+      <div> {this.state.finished}
       </div>
+        //  {this.state.lat ? "You are located at " + this.state.lat + " , " + this.state.lng : "No location found"}
+
+
     );
   }
 }

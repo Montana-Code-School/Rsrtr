@@ -19,7 +19,7 @@ console.log(HERP);
 
 
 
-["https://developers.zomato.com/api/v2.1/cities?lat="+(latitiude)+"&lon="+(longitude)]
+["https://developers.zomato.com/api/v2.1/cities?lat="+(latitiude)+"&lon="+(longitude)+""]
 
 var latitude = 46.86 //this will be code that pulls number from geolocation
 var longitude = -113.97 //this will be code that pulls number from geolocation
