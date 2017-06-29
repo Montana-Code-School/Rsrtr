@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
 import 'whatwg-fetch'
 
-let lat;
-let lng;
-
-let finshed;
-
-
 export default class Quinntest extends Component {
   state = {
-    lat: null,
-    lng: null,
+    lat: '',
+    lng: '',
     finished: null
   }
 
@@ -46,9 +40,9 @@ export default class Quinntest extends Component {
     console.log('Component mounting')
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        lat = position.coords.latitude,
-        lng = position.coords.longitude;
-        this.setState({lat: lat, lng: lng},  this.suggest.bind(this))
+        this.setState({lat: position.coords.latitude,
+                       lng: position.coords.longitude},  this.suggest.bind(this))
+
       });
     } else {
       console.log('Oh snap')
