@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import burger from './burger.png';
+import logo from './assets/Logo/Restaurantr.svg';
 import './App.css';
 //import gmap from 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCr6EwvdOcCpVEe5Xir9aLi_neVGEu6THA'
 import Quinn from './quinnTestReq'
+import FBLogin from './facebooktest'
 import 'whatwg-fetch'
 
 class App extends Component {
@@ -28,8 +29,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={burger} className="App-logo" alt="logo" />
-          <h2>Restaurantr</h2>
+          <img src={logo} className="App-logo" alt="logo" />
+
         </div>
         <p className="App-intro">
           Press the button to find a place to eat!
@@ -37,12 +38,11 @@ class App extends Component {
                 <div>
 
                <button onClick={()=>this.setState({recommendation: <Quinn key={Math.random()}/>})}> Where are we going? </button>
-
-
-
                 </div>
 
                 {this.state.recommendation}
+
+                <FBLogin />
       </div>
     );
   }

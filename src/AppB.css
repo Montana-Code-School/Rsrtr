@@ -1,13 +1,12 @@
 
 .App {
  text-align: center;
- color: rgb(211, 213, 137);
- font-family: Apple Chancery;
+ 
  text-transform: full-width;
  text-shadow: 2px 2px gold;
  font-size: 56px;
  font-variant: small-caps;
- background-color: rgb(49, 28, 4);
+
 
 
 }
@@ -15,7 +14,7 @@
 
 
 .App-header {
- background: url(https://static.pexels.com/photos/370984/pexels-photo-370984.jpeg (Not automatically expanded because 9MB is too large. You can expand it anyway or open it in a new window. You can also change your preferences to allow images of any file size to auto expand.) );
+ background-image: url( (Not automatically expanded because 9MB is too large. You can expand it anyway or open it in a new window. You can also change your preferences to allow images of any file size to auto expand.) );
  background-size: cover;
  height: 350px;
  padding: 20px;

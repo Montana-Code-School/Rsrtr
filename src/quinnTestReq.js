@@ -3,8 +3,9 @@ import 'whatwg-fetch'
 
 export default class Quinntest extends Component {
   state = {
-    lat: '',
+    lat: '', //or &lat=3242.
     lng: '',
+    cuisine: '',
     finished: null
   }
 
@@ -53,7 +54,14 @@ export default class Quinntest extends Component {
   render() {
 
     return (
-      <div> {this.state.finished}
+
+      <div>
+        <select onChange={(e)=>this.setState({cuisine: e.target.value})}>
+          <option value="&cuisine=American">American</option>
+          <option value="&cusine=Unamerican">Unamerican</option>
+          <option value="">No Preference</option>
+        </select>
+         {this.state.finished}
       </div>
         //  {this.state.lat ? "You are located at " + this.state.lat + " , " + this.state.lng : "No location found"}
 
