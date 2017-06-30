@@ -35,14 +35,14 @@ class App extends Component {
         <p className="App-intro">
           Press the button to find a place to eat!
         </p>
-                <div>
-
-               <button onClick={()=>this.setState({recommendation: <Quinn key={Math.random()}/>})}> Where are we going? </button>
-                </div>
-
+        <div>
+          <button onClick={()=>this.setState({recommendation: <Quinn key={Math.random()}/>})}> Where are we going? </button>
+        </div>
                 {this.state.recommendation}
 
-                <FBLogin />
+        <div id="FBbutton">
+          <FBLogin />
+        </div>
       </div>
     );
   }

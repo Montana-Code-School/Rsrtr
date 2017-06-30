@@ -20,6 +20,10 @@
 .App-intro {
   font-size: large;
 }
+
+#FBbutton{
+  padding: 20px 20px 20px 20px;
+}
 /* .FBbutton {
   font-family: $font-family-default;
   border-width: calc-responsive(1, 468, 2, 1920);
